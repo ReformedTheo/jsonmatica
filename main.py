@@ -5,11 +5,12 @@ from pathlib import Path
 
 from litemapy import Schematic
 
+from items import to_items
+
 BASE_DIR: Path = Path(__file__).resolve().parent
 SCHEMATIC_DIR: Path = BASE_DIR / "schematics"
 OUTPUT: Path = BASE_DIR / "catalog.json"
 
-AIR: str = "minecraft:air"
 EXTENSION: str = ".litematic"
 
 Recipe = dict[str, int]
@@ -27,9 +28,7 @@ def count_blocks(schematic: Schematic) -> Counter[str]:
         for x in region.xrange():
             for y in region.yrange():
                 for z in region.zrange():
-                    block_id: str = region[x, y, z].id
-                    if block_id != AIR:
-                        counts[block_id] += 1
+                    counts.update(to_items(region[x, y, z]))
 
     return counts
 
