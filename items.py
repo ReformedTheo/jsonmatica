@@ -130,6 +130,10 @@ def to_items(state: BlockState) -> list[str]:
     if name.startswith("infested_"):
         return [NS + name.removeprefix("infested_")]
 
+    # Encerar é bloco + favo; o jogador entrega o cobre sem cera
+    if name.startswith("waxed_"):
+        return [NS + name.removeprefix("waxed_"), NS + "honeycomb"]
+
     for block_suffix, item_suffix in SUFFIX:
         if name.endswith(block_suffix):
             return [NS + name.removesuffix(block_suffix) + item_suffix]
