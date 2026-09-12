@@ -44,8 +44,11 @@ SKIP: frozenset[str] = frozenset(
     }
 )
 
-# Bloco cujo item tem outro nome
+# Bloco cujo item tem outro nome (inclui ids de versões antigas)
 RENAME: dict[str, str] = {
+    "grass": "short_grass",
+    "grass_path": "dirt_path",
+    "chain": "iron_chain",
     "wall_torch": "torch",
     "soul_wall_torch": "soul_torch",
     "redstone_wall_torch": "redstone_torch",
